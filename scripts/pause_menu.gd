@@ -8,13 +8,13 @@ extends CanvasLayer
 @onready var sfx_volume_slider: HSlider = % SFXVolumeSlider
 @onready var music_volume_slider: HSlider = % MusicVolumeSlider
 @onready var back_button: Button = % BackButton
-@onready var master_bus = AudioServer.get_bus_index(master_audio_bus_name)
-@onready var sfx_bus = AudioServer.get_bus_index(sfx_audio_bus_name)
-@onready var music_bus = AudioServer.get_bus_index(music_audio_bus_name)
-@onready var window_mode = DisplayServer.window_get_mode()
-@export var master_audio_bus_name = "Master"
-@export var sfx_audio_bus_name = "SFX"
-@export var music_audio_bus_name = "Music"
+@onready var master_bus: int = AudioServer.get_bus_index(master_audio_bus_name)
+@onready var sfx_bus: int = AudioServer.get_bus_index(sfx_audio_bus_name)
+@onready var music_bus: int = AudioServer.get_bus_index(music_audio_bus_name)
+@onready var window_mode: int = DisplayServer.window_get_mode()
+@export var master_audio_bus_name: String = "Master"
+@export var sfx_audio_bus_name: String = "SFX"
+@export var music_audio_bus_name: String = "Music"
 var config = ConfigFile.new()
 
 
