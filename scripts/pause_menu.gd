@@ -93,7 +93,7 @@ func _on_back_button_pressed()->void :
 
 func load_config():
 	config.load("user://config.cfg")
-	match config.get_value("Display", "window_mode"):
+	match config.get_value("Display", "window_mode", 0):
 		3:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 		0:
