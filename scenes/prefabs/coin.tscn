@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3]
+[gd_scene load_steps=21 format=3 uid="uid://0j6vewiroe0a"]
 
 [ext_resource type="Script" path="res://scripts/coin.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://bx4jup5rfg5o3" path="res://assets/sprites/coin.png" id="2"]
@@ -7,62 +7,50 @@
 [sub_resource type="AtlasTexture" id="1"]
 atlas = ExtResource("2")
 region = Rect2(0, 0, 16, 16)
-script = null
 
 [sub_resource type="AtlasTexture" id="2"]
 atlas = ExtResource("2")
 region = Rect2(16, 0, 16, 16)
-script = null
 
 [sub_resource type="AtlasTexture" id="3"]
 atlas = ExtResource("2")
 region = Rect2(32, 0, 16, 16)
-script = null
 
 [sub_resource type="AtlasTexture" id="4"]
 atlas = ExtResource("2")
 region = Rect2(48, 0, 16, 16)
-script = null
 
 [sub_resource type="AtlasTexture" id="5"]
 atlas = ExtResource("2")
 region = Rect2(64, 0, 16, 16)
-script = null
 
 [sub_resource type="AtlasTexture" id="6"]
 atlas = ExtResource("2")
 region = Rect2(80, 0, 16, 16)
-script = null
 
 [sub_resource type="AtlasTexture" id="7"]
 atlas = ExtResource("2")
 region = Rect2(96, 0, 16, 16)
-script = null
 
 [sub_resource type="AtlasTexture" id="8"]
 atlas = ExtResource("2")
 region = Rect2(112, 0, 16, 16)
-script = null
 
 [sub_resource type="AtlasTexture" id="9"]
 atlas = ExtResource("2")
 region = Rect2(128, 0, 16, 16)
-script = null
 
 [sub_resource type="AtlasTexture" id="10"]
 atlas = ExtResource("2")
 region = Rect2(144, 0, 16, 16)
-script = null
 
 [sub_resource type="AtlasTexture" id="11"]
 atlas = ExtResource("2")
 region = Rect2(160, 0, 16, 16)
-script = null
 
 [sub_resource type="AtlasTexture" id="12"]
 atlas = ExtResource("2")
 region = Rect2(176, 0, 16, 16)
-script = null
 
 [sub_resource type="SpriteFrames" id="13"]
 animations = [{
@@ -107,11 +95,9 @@ animations = [{
 "name": &"default",
 "speed": 10.0
 }]
-script = null
 
 [sub_resource type="CircleShape2D" id="14"]
 radius = 4.0
-script = null
 
 [sub_resource type="Animation" id="15"]
 length = 0.001
@@ -151,7 +137,6 @@ tracks/2/keys = {
 "update": 1,
 "values": [false]
 }
-script = null
 
 [sub_resource type="Animation" id="16"]
 resource_name = "pickup"
@@ -205,14 +190,12 @@ tracks/3/keys = {
 "method": &"queue_free"
 }]
 }
-script = null
 
 [sub_resource type="AnimationLibrary" id="17"]
 _data = {
-"RESET": SubResource("15"),
-"pickup": SubResource("16")
+&"pickup": SubResource("16"),
+&"RESET": SubResource("15")
 }
-script = null
 
 [node name="Coin" type="Area2D"]
 collision_mask = 2
@@ -233,7 +216,7 @@ bus = &"SFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("17")
+&"": SubResource("17")
 }
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

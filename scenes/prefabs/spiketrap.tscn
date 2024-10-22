@@ -1,11 +1,10 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=4 format=3 uid="uid://b5g5ovund06jv"]
 
 [ext_resource type="Texture2D" uid="uid://dbsyp3hrbvdx1" path="res://assets/sprites/Spike_B.png" id="1"]
-[ext_resource type="PackedScene" uid="uid://bb4ogjrdb1yep" path="res://scenes/prefabs/killzone.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://dqu2p1usm0ur1" path="res://scenes/prefabs/killzone.tscn" id="2"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(32, 14)
-script = null
 
 [node name="Spike Trap" type="Sprite2D"]
 texture = ExtResource("1")

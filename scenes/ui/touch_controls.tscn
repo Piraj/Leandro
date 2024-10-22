@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3]
+[gd_scene load_steps=9 format=3 uid="uid://bu5s20cgtrfu8"]
 
 [ext_resource type="Texture2D" uid="uid://skj2xvof04j" path="res://assets/sprites/touchControls/pausebutton.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://ce23fblsfr6u3" path="res://assets/sprites/touchControls/leftarrowbutton.png" id="2"]
@@ -7,19 +7,15 @@
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(107.375, 47.79)
-script = null
 
 [sub_resource type="CircleShape2D" id="2"]
 radius = 40.0
-script = null
 
 [sub_resource type="CircleShape2D" id="3"]
 radius = 40.0
-script = null
 
 [sub_resource type="CircleShape2D" id="4"]
 radius = 40.0
-script = null
 
 [node name="TouchControls" type="CanvasLayer"]
 layer = 2

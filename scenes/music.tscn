@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=2 format=3 uid="uid://c3sly0is2ut8y"]
 
 [ext_resource type="AudioStream" uid="uid://d1f1yk5i61wy6" path="res://assets/music/time_for_adventure.mp3" id="1"]
 

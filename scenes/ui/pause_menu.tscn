@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=4 format=3 uid="uid://bqwyucqidgs7g"]
 
 [ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1"]
-[ext_resource type="Theme" uid="uid://dyeqoaua6y1ah" path="res://main_theme.tres" id="2"]
+[ext_resource type="Theme" path="res://main_theme.tres" id="2"]
 [ext_resource type="FontFile" uid="uid://cma8cwdroigo7" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3"]
 
 [node name="PauseMenu" type="CanvasLayer"]
@@ -81,6 +81,7 @@ theme = ExtResource("2")
 selected = 0
 item_count = 2
 popup/item_0/text = "Fullscreen"
+popup/item_0/id = 0
 popup/item_1/text = "Windowed"
 popup/item_1/id = 1
 

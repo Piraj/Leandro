@@ -1,28 +1,24 @@
-[gd_scene load_steps=10 format=3]
+[gd_scene load_steps=10 format=3 uid="uid://6wfklr34ex8h"]
 
 [ext_resource type="Script" path="res://scripts/slime.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://dwc03iwe6thl0" path="res://assets/sprites/slime_green.png" id="2"]
-[ext_resource type="PackedScene" uid="uid://bb4ogjrdb1yep" path="res://scenes/prefabs/killzone.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://dqu2p1usm0ur1" path="res://scenes/prefabs/killzone.tscn" id="3"]
 
 [sub_resource type="AtlasTexture" id="1"]
 atlas = ExtResource("2")
 region = Rect2(0, 28, 24, 22)
-script = null
 
 [sub_resource type="AtlasTexture" id="2"]
 atlas = ExtResource("2")
 region = Rect2(24, 28, 24, 22)
-script = null
 
 [sub_resource type="AtlasTexture" id="3"]
 atlas = ExtResource("2")
 region = Rect2(48, 28, 24, 22)
-script = null
 
 [sub_resource type="AtlasTexture" id="4"]
 atlas = ExtResource("2")
 region = Rect2(72, 28, 24, 22)
-script = null
 
 [sub_resource type="SpriteFrames" id="5"]
 animations = [{
@@ -43,11 +39,9 @@ animations = [{
 "name": &"idle",
 "speed": 10.0
 }]
-script = null
 
 [sub_resource type="RectangleShape2D" id="6"]
 size = Vector2(10, 13)
-script = null
 
 [node name="Slime" type="Node2D"]
 script = ExtResource("1")

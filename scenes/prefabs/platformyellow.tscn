@@ -1,10 +1,9 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://bdvcwg5c2vmts"]
 
 [ext_resource type="Texture2D" uid="uid://bcldqn664uhag" path="res://assets/sprites/platforms.png" id="1"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(32, 8)
-script = null
 
 [node name="Platform" type="AnimatableBody2D"]
 
