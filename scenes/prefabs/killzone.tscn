@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqu2p1usm0ur1"]
+[gd_scene load_steps=2 format=3 uid="uid://dqu2p1usm0ur1"]
 
 [ext_resource type="Script" path="res://scripts/killzone.gd" id="1"]
-[ext_resource type="Theme" path="res://main_theme.tres" id="2"]
 
 [node name="Killzone" type="Area2D"]
 collision_mask = 2
@@ -22,11 +21,8 @@ grow_vertical = 2
 
 [node name="GameOverLabel" type="Label" parent="CanvasLayer/CenterContainer"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
-theme = ExtResource("2")
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 20
+theme_override_constants/outline_size = 5
 text = "Game Over"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
