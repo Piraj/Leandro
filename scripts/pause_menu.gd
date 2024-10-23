@@ -1,8 +1,8 @@
 extends CanvasLayer
 
 @onready var resume_button: Button = % ResumeButton
-@onready var main: CenterContainer = $MarginContainer / Main
-@onready var options: CenterContainer = $MarginContainer / Options
+@onready var main: CenterContainer = $Main
+@onready var options: CenterContainer = $Options
 @onready var window_mode_button: OptionButton = % WindowModeButton
 @onready var master_volume_slider: HSlider = % MasterVolumeSlider
 @onready var sfx_volume_slider: HSlider = % SFXVolumeSlider

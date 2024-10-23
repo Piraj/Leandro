@@ -22,8 +22,10 @@ Music="*res://scenes/music.tscn"
 
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
+window/size/viewport_width=640
+window/size/viewport_height=360
+window/size/window_width_override=1280
+window/size/window_height_override=720
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 window/vsync/vsync_mode=0
@@ -36,6 +38,11 @@ project/assembly_name="First Game"
 
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
+
+[gui]
+
+theme/custom="res://main_theme.tres"
+theme/custom_font="res://assets/fonts/PixelOperator8.ttf"
 
 [input]
 
