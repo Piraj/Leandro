@@ -318,9 +318,13 @@ tile_set = SubResource("2")
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, -8)
 process_callback = 0
+limit_left = -500
+limit_top = -600
+limit_right = 1000
 limit_bottom = 110
 limit_smoothed = true
 position_smoothing_enabled = true
+editor_draw_limits = true
 
 [node name="Killzone" parent="." instance=ExtResource("5")]
 position = Vector2(39, 91)
