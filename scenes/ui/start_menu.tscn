@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://v4i4scxrhqws"]
 
-[ext_resource type="Script" path="res://scripts/start_menu.gd" id="1"]
+[ext_resource type="Script" uid="uid://cwffkp8d1t2x8" path="res://scripts/start_menu.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://ds4vxb4wo3xcx" path="res://Doghound Logo.svg" id="2"]
 [ext_resource type="FontFile" uid="uid://cma8cwdroigo7" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_dei22"]
 
