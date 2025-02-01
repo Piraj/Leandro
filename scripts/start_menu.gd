@@ -82,14 +82,14 @@ func _on_music_volume_slider_value_changed(value: float) -> void:
 
 func load_config() -> void:
 	config.load("user://config.cfg")
-	var window_mode: String = config.get_value("Display", "window_mode", "Windowed")
+	var window_mode: String = config.get_value("Display", "window_mode", "Fullscreen")
 	if window_mode == "Fullscreen":
 		window_mode_button.selected = 0
 	elif window_mode == "Windowed":
 		window_mode_button.selected = 1
-	if config.get_value("Display", "vsync", "true") == "true":
+	if config.get_value("Display", "vsync", "false") == "true":
 		v_sync_mode_button.button_pressed = true
-	elif config.get_value("Display", "vsync", "true") == "false":
+	elif config.get_value("Display", "vsync", "false") == "false":
 		v_sync_mode_button.button_pressed = false
 	master_volume_slider.set_value_no_signal(config.get_value("Volume", "master_volume", 1))
 	sfx_volume_slider.set_value_no_signal(config.get_value("Volume", "sfx_volume", 1))

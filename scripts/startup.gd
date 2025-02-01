@@ -13,14 +13,14 @@ func _ready() -> void:
 
 func load_config() -> void:
 	config.load("user://config.cfg")
-	match config.get_value("Display", "window_mode", "Windowed"):
+	match config.get_value("Display", "window_mode", "Fullscreen"):
 		"Fullscreen":
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
 		"Windowed":
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-	if config.get_value("Display", "vsync", "true") == "true":
+	if config.get_value("Display", "vsync", "false") == "true":
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
-	elif config.get_value("Display", "vsync", "true") == "false":
+	elif config.get_value("Display", "vsync", "false") == "false":
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 	AudioServer.set_bus_volume_linear(master_bus, config.get_value("Volume", "master_volume", 1))
 	AudioServer.set_bus_volume_linear(sfx_bus, config.get_value("Volume", "sfx_volume", 1))
