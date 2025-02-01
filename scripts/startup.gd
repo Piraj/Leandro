@@ -12,3 +12,7 @@ func load_config():
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
 		"Windowed":
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	if config.get_value("Display", "vsync", "true") == "true":
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
+	elif config.get_value("Display", "vsync", "true") == "false":
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)

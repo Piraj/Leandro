@@ -43,7 +43,7 @@ version_control/autoload_on_startup=true
 
 [gui]
 
-theme/custom="res://main_theme.tres"
+theme/custom="uid://cgvy1nspr0uvy"
 theme/custom_font="res://assets/fonts/PixelOperator8.ttf"
 
 [input]
