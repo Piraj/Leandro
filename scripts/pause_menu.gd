@@ -34,8 +34,13 @@ func _process(_delta: float) -> void:
 		options.visible = false
 
 func _on_resume_button_pressed() -> void:
-		get_tree().paused = false
-		visible = false
+	get_tree().paused = false
+	visible = false
+
+func _on_back_button_pressed() -> void:
+	options.visible = false
+	main.visible = true
+	resume_button.grab_focus()
 
 func _on_options_button_pressed() -> void:
 	main.visible = false
@@ -68,24 +73,19 @@ func _on_v_sync_button_pressed() -> void:
 		config.save("user://config.cfg")
 
 func _on_master_volume_slider_value_changed(value: float) -> void:
-	AudioServer.set_bus_volume_db(master_bus, linear_to_db(value))
+	AudioServer.set_bus_volume_linear(master_bus, value)
 	config.set_value("Volume", "master_volume", value)
 	config.save("user://config.cfg")
 
 func _on_sfx_volume_slider_value_changed(value: float) -> void:
-	AudioServer.set_bus_volume_db(sfx_bus, linear_to_db(value))
+	AudioServer.set_bus_volume_linear(sfx_bus, value)
 	config.set_value("Volume", "sfx_volume", value)
 	config.save("user://config.cfg")
 
 func _on_music_volume_slider_value_changed(value: float) -> void:
-	AudioServer.set_bus_volume_db(music_bus, linear_to_db(value))
+	AudioServer.set_bus_volume_linear(music_bus, value)
 	config.set_value("Volume", "music_volume", value)
 	config.save("user://config.cfg")
-
-func _on_back_button_pressed() -> void:
-	options.visible = false
-	main.visible = true
-	resume_button.grab_focus()
 
 func load_config() -> void:
 	config.load("user://config.cfg")
@@ -98,6 +98,6 @@ func load_config() -> void:
 		v_sync_mode_button.button_pressed = true
 	elif config.get_value("Display", "vsync", "true") == "false":
 		v_sync_mode_button.button_pressed = false
-	master_volume_slider.value = config.get_value("Volume", "master_volume", 1)
-	sfx_volume_slider.value = config.get_value("Volume", "sfx_volume", 1)
-	music_volume_slider.value = config.get_value("Volume", "music_volume", 1)
+	master_volume_slider.set_value_no_signal(config.get_value("Volume", "master_volume", 1))
+	sfx_volume_slider.set_value_no_signal(config.get_value("Volume", "sfx_volume", 1))
+	music_volume_slider.set_value_no_signal(config.get_value("Volume", "music_volume", 1))
