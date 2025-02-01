@@ -1,11 +1,11 @@
 extends Node
 
-var config = ConfigFile.new()
+var config: ConfigFile = ConfigFile.new()
 
-func _ready()->void :
+func _ready() -> void:
 	load_config()
 
-func load_config():
+func load_config() -> void:
 	config.load("user://config.cfg")
 	match config.get_value("Display", "window_mode", "Windowed"):
 		"Fullscreen":
