@@ -100,15 +100,28 @@ popup/item_0/id = 0
 popup/item_1/text = "Windowed"
 popup/item_1/id = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Options/VBoxContainer"]
+[node name="VSync" type="HBoxContainer" parent="Options/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 364
 
-[node name="Label" type="Label" parent="Options/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="Options/VBoxContainer/VSync"]
 layout_mode = 2
 text = "V-Sync"
 
-[node name="VSyncButton" type="CheckButton" parent="Options/VBoxContainer/HBoxContainer"]
+[node name="VSyncButton" type="CheckButton" parent="Options/VBoxContainer/VSync"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="PixelPerfect" type="HBoxContainer" parent="Options/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 282
+alignment = 2
+
+[node name="Label" type="Label" parent="Options/VBoxContainer/PixelPerfect"]
+layout_mode = 2
+text = "Pixel Perfect"
+
+[node name="PixelPerfectButton" type="CheckButton" parent="Options/VBoxContainer/PixelPerfect"]
 unique_name_in_owner = true
 layout_mode = 2
 
@@ -172,7 +185,8 @@ text = "Back"
 [connection signal="pressed" from="Main/VBoxContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="Main/VBoxContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="item_selected" from="Options/VBoxContainer/WindowMode/WindowModeButton" to="." method="_on_window_mode_button_item_selected"]
-[connection signal="pressed" from="Options/VBoxContainer/HBoxContainer/VSyncButton" to="." method="_on_v_sync_button_pressed"]
+[connection signal="pressed" from="Options/VBoxContainer/VSync/VSyncButton" to="." method="_on_v_sync_button_pressed"]
+[connection signal="pressed" from="Options/VBoxContainer/PixelPerfect/PixelPerfectButton" to="." method="_on_pixel_perfect_button_pressed"]
 [connection signal="value_changed" from="Options/VBoxContainer/MasterVolume/MasterVolumeSlider" to="." method="_on_master_volume_slider_value_changed"]
 [connection signal="value_changed" from="Options/VBoxContainer/SFXVolume/SFXVolumeSlider" to="." method="_on_sfx_volume_slider_value_changed"]
 [connection signal="value_changed" from="Options/VBoxContainer/MusicVolume/MusicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]

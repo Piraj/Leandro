@@ -22,6 +22,10 @@ func load_config() -> void:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
 	elif config.get_value("Display", "vsync", "false") == "false":
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
+	if config.get_value("Display", "pixel_perfect", "true") == "true":
+		get_tree().root.set_content_scale_stretch(Window.CONTENT_SCALE_STRETCH_INTEGER)
+	elif config.get_value("Display", "pixel_perfect", "true") == "false":
+		get_tree().root.set_content_scale_stretch(Window.CONTENT_SCALE_STRETCH_FRACTIONAL)
 	AudioServer.set_bus_volume_linear(master_bus, config.get_value("Volume", "master_volume", 1))
 	AudioServer.set_bus_volume_linear(sfx_bus, config.get_value("Volume", "sfx_volume", 1))
 	AudioServer.set_bus_volume_linear(music_bus, config.get_value("Volume", "music_volume", 1))

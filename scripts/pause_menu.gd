@@ -5,6 +5,7 @@ extends CanvasLayer
 @onready var options: CenterContainer = $Options
 @onready var window_mode_button: OptionButton = %WindowModeButton
 @onready var v_sync_mode_button: CheckButton = %VSyncButton
+@onready var pixel_perfect_mode_button: CheckButton = %PixelPerfectButton
 @onready var master_volume_slider: HSlider = %MasterVolumeSlider
 @onready var sfx_volume_slider: HSlider = %SFXVolumeSlider
 @onready var music_volume_slider: HSlider = %MusicVolumeSlider
@@ -71,7 +72,17 @@ func _on_v_sync_button_pressed() -> void:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 		config.set_value("Display", "vsync", "false")
 		config.save("user://config.cfg")
-
+		
+func _on_pixel_perfect_button_pressed() -> void:
+	if pixel_perfect_mode_button.button_pressed:
+		get_tree().root.set_content_scale_stretch(Window.CONTENT_SCALE_STRETCH_INTEGER)
+		config.set_value("Display", "pixel_perfect", "true")
+		config.save("user://config.cfg")
+	elif !pixel_perfect_mode_button.button_pressed:
+		get_tree().root.set_content_scale_stretch(Window.CONTENT_SCALE_STRETCH_FRACTIONAL)
+		config.set_value("Display", "pixel_perfect", "false")
+		config.save("user://config.cfg")
+		
 func _on_master_volume_slider_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_linear(master_bus, value)
 	config.set_value("Volume", "master_volume", value)
