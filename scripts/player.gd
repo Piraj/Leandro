@@ -97,3 +97,12 @@ func death() -> void:
 	animated_sprite.stop()
 	velocity = Vector2.ZERO
 	velocity.y = move_toward(velocity.y, 20, speed)
+	
+func end_level() -> void:
+	can_move = false
+	while velocity.x > 0:
+		await get_tree().create_timer(get_physics_process_delta_time()).timeout
+		velocity.x = move_toward(velocity.x, 0, 2)
+	animated_sprite.play("idle")
+	animated_sprite.stop()
+	

@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://dosc0243u7xpa"]
+
+[ext_resource type="Script" uid="uid://b3mbr877q8xx7" path="res://scripts/levelendarea.gd" id="1_da3mi"]
+
+[node name="LevelEndArea" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_da3mi")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LevelEndLabel" type="Label" parent="CanvasLayer/CenterContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/outline_size = 2
+text = "Level Completed
+Press any key to return to main menu"
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
