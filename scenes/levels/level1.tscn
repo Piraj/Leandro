@@ -266,7 +266,7 @@ atlas = ExtResource("3")
 region = Rect2(96, 16, 16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1xax6"]
-size = Vector2(150, 30)
+size = Vector2(200, 30)
 
 [node name="Level1" type="Node2D"]
 
@@ -282,8 +282,7 @@ offset_left = 10.0
 offset_top = 10.0
 offset_right = 108.0
 offset_bottom = 26.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 2
+theme_override_constants/outline_size = 3
 text = "Coins: 0"
 vertical_alignment = 1
 
@@ -326,31 +325,31 @@ shape = SubResource("3")
 
 [node name="Coins" type="Node" parent="."]
 
-[node name="Coin" parent="Coins" instance=ExtResource("6")]
+[node name="Coin" parent="Coins" groups=["Coins"] instance=ExtResource("6")]
 position = Vector2(40, 24)
 
-[node name="Coin2" parent="Coins" instance=ExtResource("6")]
+[node name="Coin2" parent="Coins" groups=["Coins"] instance=ExtResource("6")]
 position = Vector2(520, 24)
 
-[node name="Coin3" parent="Coins" instance=ExtResource("6")]
+[node name="Coin3" parent="Coins" groups=["Coins"] instance=ExtResource("6")]
 position = Vector2(56, -88)
 
-[node name="Coin4" parent="Coins" instance=ExtResource("6")]
+[node name="Coin4" parent="Coins" groups=["Coins"] instance=ExtResource("6")]
 position = Vector2(200, 24)
 
-[node name="Coin5" parent="Coins" instance=ExtResource("6")]
+[node name="Coin5" parent="Coins" groups=["Coins"] instance=ExtResource("6")]
 position = Vector2(536, -184)
 
-[node name="Coin6" parent="Coins" instance=ExtResource("6")]
+[node name="Coin6" parent="Coins" groups=["Coins"] instance=ExtResource("6")]
 position = Vector2(609, -56)
 
-[node name="Coin7" parent="Coins" instance=ExtResource("6")]
+[node name="Coin7" parent="Coins" groups=["Coins"] instance=ExtResource("6")]
 position = Vector2(344, -216)
 
-[node name="Coin8" parent="Coins" instance=ExtResource("6")]
+[node name="Coin8" parent="Coins" groups=["Coins"] instance=ExtResource("6")]
 position = Vector2(360, -312)
 
-[node name="Coin9" parent="Coins" instance=ExtResource("6")]
+[node name="Coin9" parent="Coins" groups=["Coins"] instance=ExtResource("6")]
 position = Vector2(128, 56)
 
 [node name="Platforms" type="Node" parent="."]
@@ -441,7 +440,7 @@ position = Vector2(136, 56)
 texture = SubResource("10")
 
 [node name="LevelEndArea" parent="." instance=ExtResource("16_sbmf2")]
-position = Vector2(92, 18)
+position = Vector2(554, -365)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelEndArea"]
 shape = SubResource("RectangleShape2D_1xax6")
