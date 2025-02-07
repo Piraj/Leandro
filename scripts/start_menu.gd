@@ -5,22 +5,17 @@ extends Control
 @onready var options: CenterContainer = $Options
 @onready var main: CenterContainer = $Main
 @onready var window_mode_button: OptionButton = %WindowModeButton
-@onready var v_sync_mode_button: CheckButton = %VSyncButton
-@onready var pixel_perfect_mode_button: CheckButton = %PixelPerfectButton
-@onready var master_volume_slider: HSlider = %MasterVolumeSlider
-@onready var sfx_volume_slider: HSlider = %SFXVolumeSlider
-@onready var music_volume_slider: HSlider = %MusicVolumeSlider
-@onready var master_bus: int = AudioServer.get_bus_index(master_audio_bus_name)
-@onready var sfx_bus: int = AudioServer.get_bus_index(sfx_audio_bus_name)
-@onready var music_bus: int = AudioServer.get_bus_index(music_audio_bus_name)
-@export var master_audio_bus_name: String = "Master"
-@export var sfx_audio_bus_name: String = "SFX"
-@export var music_audio_bus_name: String = "Music"
 var config: ConfigFile = ConfigFile.new()
 
 
 func _ready() -> void:
-	load_config()
+	Options.window_mode_button = %WindowModeButton
+	Options.v_sync_mode_button = %VSyncButton
+	Options.pixel_perfect_mode_button = %PixelPerfectButton
+	Options.master_volume_slider = %MasterVolumeSlider
+	Options.sfx_volume_slider = %SFXVolumeSlider
+	Options.music_volume_slider = %MusicVolumeSlider
+	Options.load_config()
 	start_game_button.grab_focus()
 
 func _process(_delta: float) -> void:
@@ -46,66 +41,19 @@ func _on_back_button_pressed() -> void:
 	start_game_button.grab_focus()
 
 func _on_window_mode_button_item_selected(index: int) -> void:
-	match index:
-		0:
-			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
-			config.set_value("Display", "window_mode", "Fullscreen")
-			config.save("user://config.cfg")
-		1:
-			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-			config.set_value("Display", "window_mode", "Windowed")
-			config.save("user://config.cfg")
+	Options.handle_window_mode(index)
+	
+func _on_v_sync_button_toggled(toggled_on: bool) -> void:
+	Options.handle_vsync_mode(toggled_on)
 
-func _on_v_sync_button_pressed() -> void:
-	if v_sync_mode_button.button_pressed:
-		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
-		config.set_value("Display", "vsync", "true")
-		config.save("user://config.cfg")
-	elif !v_sync_mode_button.button_pressed:
-		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
-		config.set_value("Display", "vsync", "false")
-		config.save("user://config.cfg")
-		
-func _on_pixel_perfect_button_pressed() -> void:
-	if pixel_perfect_mode_button.button_pressed:
-		get_tree().root.set_content_scale_stretch(Window.CONTENT_SCALE_STRETCH_INTEGER)
-		config.set_value("Display", "pixel_perfect", "true")
-		config.save("user://config.cfg")
-	elif !pixel_perfect_mode_button.button_pressed:
-		get_tree().root.set_content_scale_stretch(Window.CONTENT_SCALE_STRETCH_FRACTIONAL)
-		config.set_value("Display", "pixel_perfect", "false")
-		config.save("user://config.cfg")
+func _on_pixel_perfect_button_toggled(toggled_on: bool) -> void:
+	Options.handle_pixelperfect_mode(toggled_on)
 
 func _on_master_volume_slider_value_changed(value: float) -> void:
-	AudioServer.set_bus_volume_linear(master_bus, value)
-	config.set_value("Volume", "master_volume", value)
-	config.save("user://config.cfg")
+	Options.handle_master_volume(value)
 
 func _on_sfx_volume_slider_value_changed(value: float) -> void:
-	AudioServer.set_bus_volume_linear(sfx_bus, value)
-	config.set_value("Volume", "sfx_volume", value)
-	config.save("user://config.cfg")
+	Options.handle_sfx_volume(value)
 
 func _on_music_volume_slider_value_changed(value: float) -> void:
-	AudioServer.set_bus_volume_linear(music_bus, value)
-	config.set_value("Volume", "music_volume", value)
-	config.save("user://config.cfg")
-
-func load_config() -> void:
-	config.load("user://config.cfg")
-	var window_mode: String = config.get_value("Display", "window_mode", "Fullscreen")
-	if window_mode == "Fullscreen":
-		window_mode_button.selected = 0
-	elif window_mode == "Windowed":
-		window_mode_button.selected = 1
-	if config.get_value("Display", "vsync", "false") == "true":
-		v_sync_mode_button.button_pressed = true
-	elif config.get_value("Display", "vsync", "false") == "false":
-		v_sync_mode_button.button_pressed = false
-	if config.get_value("Display", "pixel_perfect", "true") == "true":
-		pixel_perfect_mode_button.button_pressed = true
-	elif config.get_value("Display", "pixel_perfect", "true") == "false":
-		pixel_perfect_mode_button.button_pressed = false
-	master_volume_slider.set_value_no_signal(config.get_value("Volume", "master_volume", 1))
-	sfx_volume_slider.set_value_no_signal(config.get_value("Volume", "sfx_volume", 1))
-	music_volume_slider.set_value_no_signal(config.get_value("Volume", "music_volume", 1))
+	Options.handle_music_volume(value)

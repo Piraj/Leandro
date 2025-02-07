@@ -19,7 +19,7 @@ config/icon="res://Doghound Logo.svg"
 [autoload]
 
 Music="*res://scenes/music.tscn"
-Startup="*res://scripts/startup.gd"
+Options="*res://scripts/autoloads/options.gd"
 
 [debug]
 
