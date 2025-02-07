@@ -67,22 +67,22 @@ func handle_window_mode(index: int) -> void:
 			config.set_value("Display", "window_mode", "Windowed")
 			config.save("user://config.cfg")
 
-func handle_vsync_mode(vsync: bool) -> void:
-	if vsync:
+func handle_v_sync_mode(v_sync: bool) -> void:
+	if v_sync:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
 		config.set_value("Display", "vsync", "true")
 		config.save("user://config.cfg")
-	elif !vsync:
+	elif !v_sync:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 		config.set_value("Display", "vsync", "false")
 		config.save("user://config.cfg")
 
-func handle_pixelperfect_mode(pixelperfect: bool) -> void:
-	if pixelperfect:
+func handle_pixel_perfect_mode(pixel_perfect: bool) -> void:
+	if pixel_perfect:
 		get_tree().root.set_content_scale_stretch(Window.CONTENT_SCALE_STRETCH_INTEGER)
 		config.set_value("Display", "pixel_perfect", "true")
 		config.save("user://config.cfg")
-	elif !pixelperfect:
+	elif !pixel_perfect:
 		get_tree().root.set_content_scale_stretch(Window.CONTENT_SCALE_STRETCH_FRACTIONAL)
 		config.set_value("Display", "pixel_perfect", "false")
 		config.save("user://config.cfg")

@@ -51,10 +51,10 @@ func _on_window_mode_button_item_selected(index: int) -> void:
 	Options.handle_window_mode(index)
 
 func _on_v_sync_button_toggled(toggled_on: bool) -> void:
-	Options.handle_vsync_mode(toggled_on)
+	Options.handle_v_sync_mode(toggled_on)
 
 func _on_pixel_perfect_button_toggled(toggled_on: bool) -> void:
-	Options.handle_pixelperfect_mode(toggled_on)
+	Options.handle_pixel_perfect_mode(toggled_on)
 
 func _on_master_volume_slider_value_changed(value: float) -> void:
 	Options.handle_master_volume(value)

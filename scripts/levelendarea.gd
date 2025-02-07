@@ -1,9 +1,9 @@
 extends Area2D
 
-@onready var game_manager:Node = %GameManager
-@onready var level_completed_label:Label = %LevelEndLabel
-@onready var coin_count:int = get_tree().get_node_count_in_group("Coins")
-var level_ended:bool
+@onready var game_manager: Node = %GameManager
+@onready var level_completed_label: Label = %LevelEndLabel
+@onready var coin_count: int = get_tree().get_node_count_in_group("Coins")
+var level_ended: bool
 
 
 func _process(_delta: float) -> void:

@@ -1,10 +1,10 @@
 extends Area2D
 
-@onready var timer:Timer = $Timer
-@onready var game_over_label:Label = %GameOverLabel
+@onready var timer: Timer = $Timer
+@onready var game_over_label: Label = %GameOverLabel
 
 
-func _on_body_entered(body:Node2D) -> void:
+func _on_body_entered(body: Node2D) -> void:
 	game_over_label.visible = true
 	if body.has_method("death"):
 		body.death()
