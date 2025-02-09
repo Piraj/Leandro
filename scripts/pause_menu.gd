@@ -1,10 +1,12 @@
 extends CanvasLayer
 
 @onready var resume_button: Button = %ResumeButton
+@onready var back_button: Button = %BackButton
 @onready var pause_menu: CenterContainer = %PauseMenu
 @onready var options: CenterContainer = %Options
 @onready var window_mode_button: OptionButton = %WindowModeButton
-@onready var back_button: Button = %BackButton
+@onready var window_mode_container: HBoxContainer = %WindowMode
+@onready var v_sync_container: HBoxContainer = %VSync
 var can_pause: bool = true
 var config: ConfigFile = ConfigFile.new()
 
@@ -17,6 +19,9 @@ func _ready() -> void:
 	Options.sfx_volume_slider = %SFXVolumeSlider
 	Options.music_volume_slider = %MusicVolumeSlider
 	Options.load_config()
+	if OS.get_name() == "Android":
+		window_mode_container.visible = false
+		v_sync_container.visible = false
 	resume_button.grab_focus()
 
 func _process(_delta: float) -> void:

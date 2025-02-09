@@ -2,9 +2,11 @@ extends Control
 
 @onready var start_game_button: Button = %StartGameButton
 @onready var quit_button: Button = %QuitButton
-@onready var options: CenterContainer = $Options
-@onready var main: CenterContainer = $Main
+@onready var options: CenterContainer = %Options
+@onready var main: CenterContainer = %Main
 @onready var window_mode_button: OptionButton = %WindowModeButton
+@onready var window_mode_container: HBoxContainer = %WindowMode
+@onready var v_sync_container: HBoxContainer = %VSync
 var config: ConfigFile = ConfigFile.new()
 
 
@@ -16,6 +18,9 @@ func _ready() -> void:
 	Options.sfx_volume_slider = %SFXVolumeSlider
 	Options.music_volume_slider = %MusicVolumeSlider
 	Options.load_config()
+	if OS.get_name() == "Android":
+		window_mode_container.visible = false
+		v_sync_container.visible = false
 	start_game_button.grab_focus()
 
 func _process(_delta: float) -> void:

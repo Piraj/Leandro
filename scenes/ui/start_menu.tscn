@@ -23,6 +23,7 @@ grow_vertical = 2
 color = Color(0.0980392, 0.313726, 0.752941, 1)
 
 [node name="Main" type="CenterContainer" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -64,6 +65,7 @@ layout_mode = 2
 text = "Quit"
 
 [node name="Options" type="CenterContainer" parent="."]
+unique_name_in_owner = true
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -83,6 +85,7 @@ text = "Options"
 horizontal_alignment = 1
 
 [node name="WindowMode" type="HBoxContainer" parent="Options/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 165
 
@@ -101,6 +104,7 @@ popup/item_1/text = "Windowed"
 popup/item_1/id = 1
 
 [node name="VSync" type="HBoxContainer" parent="Options/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 364
 
