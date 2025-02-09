@@ -325,31 +325,31 @@ shape = SubResource("3")
 
 [node name="Coins" type="Node" parent="."]
 
-[node name="Coin" parent="Coins" groups=["Coins"] instance=ExtResource("6")]
+[node name="Coin" parent="Coins" instance=ExtResource("6")]
 position = Vector2(40, 24)
 
-[node name="Coin2" parent="Coins" groups=["Coins"] instance=ExtResource("6")]
+[node name="Coin2" parent="Coins" instance=ExtResource("6")]
 position = Vector2(520, 24)
 
-[node name="Coin3" parent="Coins" groups=["Coins"] instance=ExtResource("6")]
+[node name="Coin3" parent="Coins" instance=ExtResource("6")]
 position = Vector2(56, -88)
 
-[node name="Coin4" parent="Coins" groups=["Coins"] instance=ExtResource("6")]
+[node name="Coin4" parent="Coins" instance=ExtResource("6")]
 position = Vector2(200, 24)
 
-[node name="Coin5" parent="Coins" groups=["Coins"] instance=ExtResource("6")]
+[node name="Coin5" parent="Coins" instance=ExtResource("6")]
 position = Vector2(536, -184)
 
-[node name="Coin6" parent="Coins" groups=["Coins"] instance=ExtResource("6")]
+[node name="Coin6" parent="Coins" instance=ExtResource("6")]
 position = Vector2(609, -56)
 
-[node name="Coin7" parent="Coins" groups=["Coins"] instance=ExtResource("6")]
+[node name="Coin7" parent="Coins" instance=ExtResource("6")]
 position = Vector2(344, -216)
 
-[node name="Coin8" parent="Coins" groups=["Coins"] instance=ExtResource("6")]
+[node name="Coin8" parent="Coins" instance=ExtResource("6")]
 position = Vector2(360, -312)
 
-[node name="Coin9" parent="Coins" groups=["Coins"] instance=ExtResource("6")]
+[node name="Coin9" parent="Coins" instance=ExtResource("6")]
 position = Vector2(128, 56)
 
 [node name="Platforms" type="Node" parent="."]
