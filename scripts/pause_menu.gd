@@ -1,10 +1,11 @@
 extends CanvasLayer
 
 @onready var resume_button: Button = %ResumeButton
-@onready var main: CenterContainer = $Main
-@onready var options: CenterContainer = $Options
+@onready var pause_menu: CenterContainer = %PauseMenu
+@onready var options: CenterContainer = %Options
 @onready var window_mode_button: OptionButton = %WindowModeButton
 @onready var back_button: Button = %BackButton
+var can_pause: bool = true
 var config: ConfigFile = ConfigFile.new()
 
 
@@ -20,13 +21,13 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if options.visible == false:
-		if Input.is_action_just_pressed("pause"):
+		if Input.is_action_just_pressed("pause") && can_pause:
 			get_tree().paused = not get_tree().paused
 			visible = not visible
 			if visible:
 				resume_button.grab_focus()
 	elif Input.is_action_just_pressed("pause"):
-		main.visible = true
+		pause_menu.visible = true
 		options.visible = false
 
 func _on_resume_button_pressed() -> void:
@@ -35,11 +36,11 @@ func _on_resume_button_pressed() -> void:
 
 func _on_back_button_pressed() -> void:
 	options.visible = false
-	main.visible = true
+	pause_menu.visible = true
 	resume_button.grab_focus()
 
 func _on_options_button_pressed() -> void:
-	main.visible = false
+	pause_menu.visible = false
 	options.visible = true
 	window_mode_button.grab_focus()
 
