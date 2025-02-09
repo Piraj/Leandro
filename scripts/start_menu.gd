@@ -18,7 +18,7 @@ func _ready() -> void:
 	Options.sfx_volume_slider = %SFXVolumeSlider
 	Options.music_volume_slider = %MusicVolumeSlider
 	Options.load_config()
-	if OS.get_name() == "Android":
+	if OS.has_feature("mobile"):
 		window_mode_container.visible = false
 		v_sync_container.visible = false
 	start_game_button.grab_focus()
