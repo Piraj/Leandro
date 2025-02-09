@@ -81,8 +81,7 @@ func apply_movement() -> void:
 func death() -> void:
 	hurt_audio.play()
 	can_move = false
-	animated_sprite.play("idle")
-	animated_sprite.stop()
+	animated_sprite.play("hurt")
 	velocity = Vector2.ZERO
 	velocity.y = move_toward(velocity.y, 20, speed)
 	
