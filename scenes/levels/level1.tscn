@@ -185,9 +185,6 @@ sources/0 = SubResource("1")
 
 [sub_resource type="WorldBoundaryShape2D" id="3"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1xax6"]
-size = Vector2(200, 30)
-
 [sub_resource type="Animation" id="4"]
 length = 0.001
 tracks/0/type = "value"
@@ -268,6 +265,9 @@ _data = {
 atlas = ExtResource("3")
 region = Rect2(96, 16, 16, 16)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1xax6"]
+size = Vector2(200, 30)
+
 [node name="Level1" type="Node2D"]
 
 [node name="GameManager" type="Node" parent="."]
@@ -329,14 +329,6 @@ position = Vector2(39, 91)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
 shape = SubResource("3")
-
-[node name="LevelEndZone" parent="." node_paths=PackedStringArray("game_manager", "pause_menu") instance=ExtResource("16_sbmf2")]
-position = Vector2(554, -365)
-game_manager = NodePath("../GameManager")
-pause_menu = NodePath("../PauseMenu")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelEndZone"]
-shape = SubResource("RectangleShape2D_1xax6")
 
 [node name="Coins" type="Node" parent="."]
 
@@ -446,3 +438,11 @@ texture = SubResource("10")
 z_index = 10
 position = Vector2(136, 56)
 texture = SubResource("10")
+
+[node name="LevelEndZone" parent="." node_paths=PackedStringArray("game_manager", "pause_menu") instance=ExtResource("16_sbmf2")]
+position = Vector2(554, -365)
+game_manager = NodePath("../GameManager")
+pause_menu = NodePath("../PauseMenu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelEndZone"]
+shape = SubResource("RectangleShape2D_1xax6")
