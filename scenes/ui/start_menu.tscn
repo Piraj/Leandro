@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ds4vxb4wo3xcx" path="res://Doghound Logo.svg" id="2"]
 [ext_resource type="FontFile" uid="uid://cma8cwdroigo7" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_dei22"]
 
-[node name="StartMenu" type="Control"]
+[node name="StartMenu" type="Control" node_paths=PackedStringArray("start_game_button", "main", "options", "window_mode_button", "window_mode_container", "vsync_mode_button", "vsync_container", "pixel_perfect_mode_button", "master_volume_slider", "sfx_volume_slider", "music_volume_slider")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,6 +12,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1")
+start_game_button = NodePath("Main/VBoxContainer/VBoxContainer/StartGameButton")
+main = NodePath("Main")
+options = NodePath("Options")
+window_mode_button = NodePath("Options/VBoxContainer/WindowMode/WindowModeButton")
+window_mode_container = NodePath("Options/VBoxContainer/WindowMode")
+vsync_mode_button = NodePath("Options/VBoxContainer/VSync/VSyncButton")
+vsync_container = NodePath("Options/VBoxContainer/VSync")
+pixel_perfect_mode_button = NodePath("Options/VBoxContainer/PixelPerfect/PixelPerfectButton")
+master_volume_slider = NodePath("Options/VBoxContainer/MasterVolume/MasterVolumeSlider")
+sfx_volume_slider = NodePath("Options/VBoxContainer/SFXVolume/SFXVolumeSlider")
+music_volume_slider = NodePath("Options/VBoxContainer/MusicVolume/MusicVolumeSlider")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -23,7 +34,6 @@ grow_vertical = 2
 color = Color(0.0980392, 0.313726, 0.752941, 1)
 
 [node name="Main" type="CenterContainer" parent="."]
-unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -50,22 +60,18 @@ text = "Leandro"
 layout_mode = 2
 
 [node name="StartGameButton" type="Button" parent="Main/VBoxContainer/VBoxContainer"]
-unique_name_in_owner = true
 layout_mode = 2
 text = "Start Game"
 
 [node name="OptionsButton" type="Button" parent="Main/VBoxContainer/VBoxContainer"]
-unique_name_in_owner = true
 layout_mode = 2
 text = "Options"
 
 [node name="QuitButton" type="Button" parent="Main/VBoxContainer/VBoxContainer"]
-unique_name_in_owner = true
 layout_mode = 2
 text = "Quit"
 
 [node name="Options" type="CenterContainer" parent="."]
-unique_name_in_owner = true
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -85,7 +91,6 @@ text = "Options"
 horizontal_alignment = 1
 
 [node name="WindowMode" type="HBoxContainer" parent="Options/VBoxContainer"]
-unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 165
 
@@ -94,7 +99,6 @@ layout_mode = 2
 text = "Window Mode"
 
 [node name="WindowModeButton" type="OptionButton" parent="Options/VBoxContainer/WindowMode"]
-unique_name_in_owner = true
 layout_mode = 2
 selected = 0
 item_count = 2
@@ -104,7 +108,6 @@ popup/item_1/text = "Windowed"
 popup/item_1/id = 1
 
 [node name="VSync" type="HBoxContainer" parent="Options/VBoxContainer"]
-unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 364
 
@@ -113,7 +116,6 @@ layout_mode = 2
 text = "V-Sync"
 
 [node name="VSyncButton" type="CheckButton" parent="Options/VBoxContainer/VSync"]
-unique_name_in_owner = true
 layout_mode = 2
 
 [node name="PixelPerfect" type="HBoxContainer" parent="Options/VBoxContainer"]
@@ -126,7 +128,6 @@ layout_mode = 2
 text = "Pixel Perfect"
 
 [node name="PixelPerfectButton" type="CheckButton" parent="Options/VBoxContainer/PixelPerfect"]
-unique_name_in_owner = true
 layout_mode = 2
 
 [node name="MasterVolume" type="HBoxContainer" parent="Options/VBoxContainer"]
@@ -139,7 +140,6 @@ layout_mode = 2
 text = "Master"
 
 [node name="MasterVolumeSlider" type="HSlider" parent="Options/VBoxContainer/MasterVolume"]
-unique_name_in_owner = true
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_vertical = 1
@@ -156,7 +156,6 @@ layout_mode = 2
 text = "SFX"
 
 [node name="SFXVolumeSlider" type="HSlider" parent="Options/VBoxContainer/SFXVolume"]
-unique_name_in_owner = true
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_vertical = 1
@@ -173,7 +172,6 @@ layout_mode = 2
 text = "Music"
 
 [node name="MusicVolumeSlider" type="HSlider" parent="Options/VBoxContainer/MusicVolume"]
-unique_name_in_owner = true
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_vertical = 1
@@ -181,7 +179,6 @@ max_value = 1.0
 step = 0.05
 
 [node name="BackButton" type="Button" parent="Options/VBoxContainer"]
-unique_name_in_owner = true
 layout_mode = 2
 text = "Back"
 
@@ -189,7 +186,7 @@ text = "Back"
 [connection signal="pressed" from="Main/VBoxContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="Main/VBoxContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="item_selected" from="Options/VBoxContainer/WindowMode/WindowModeButton" to="." method="_on_window_mode_button_item_selected"]
-[connection signal="toggled" from="Options/VBoxContainer/VSync/VSyncButton" to="." method="_on_v_sync_button_toggled"]
+[connection signal="toggled" from="Options/VBoxContainer/VSync/VSyncButton" to="." method="_on_vsync_button_toggled"]
 [connection signal="toggled" from="Options/VBoxContainer/PixelPerfect/PixelPerfectButton" to="." method="_on_pixel_perfect_button_toggled"]
 [connection signal="value_changed" from="Options/VBoxContainer/MasterVolume/MasterVolumeSlider" to="." method="_on_master_volume_slider_value_changed"]
 [connection signal="value_changed" from="Options/VBoxContainer/SFXVolume/SFXVolumeSlider" to="." method="_on_sfx_volume_slider_value_changed"]

@@ -7,7 +7,7 @@ var master_audio_bus_name: String = "Master"
 var sfx_audio_bus_name: String = "SFX"
 var music_audio_bus_name: String = "Music"
 var window_mode_button: OptionButton
-var v_sync_mode_button: CheckButton
+var vsync_mode_button: CheckButton
 var pixel_perfect_mode_button: CheckButton
 var master_volume_slider: HSlider
 var sfx_volume_slider: HSlider
@@ -45,9 +45,9 @@ func load_config() -> void:
 	elif window_mode == "Windowed":
 		window_mode_button.selected = 1
 	if config.get_value("Display", "vsync", "false") == "true":
-		v_sync_mode_button.button_pressed = true
+		vsync_mode_button.button_pressed = true
 	elif config.get_value("Display", "vsync", "false") == "false":
-		v_sync_mode_button.button_pressed = false
+		vsync_mode_button.button_pressed = false
 	if config.get_value("Display", "pixel_perfect", "true") == "true":
 		pixel_perfect_mode_button.button_pressed = true
 	elif config.get_value("Display", "pixel_perfect", "true") == "false":
@@ -67,12 +67,12 @@ func handle_window_mode(index: int) -> void:
 			config.set_value("Display", "window_mode", "Windowed")
 			config.save("user://config.cfg")
 
-func handle_v_sync_mode(v_sync: bool) -> void:
-	if v_sync:
+func handle_vsync_mode(vsync: bool) -> void:
+	if vsync:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
 		config.set_value("Display", "vsync", "true")
 		config.save("user://config.cfg")
-	elif !v_sync:
+	elif !vsync:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 		config.set_value("Display", "vsync", "false")
 		config.save("user://config.cfg")

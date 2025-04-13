@@ -1,26 +1,34 @@
 extends Control
 
-@onready var start_game_button: Button = %StartGameButton
-@onready var quit_button: Button = %QuitButton
-@onready var options: CenterContainer = %Options
-@onready var main: CenterContainer = %Main
-@onready var window_mode_button: OptionButton = %WindowModeButton
-@onready var window_mode_container: HBoxContainer = %WindowMode
-@onready var v_sync_container: HBoxContainer = %VSync
+
+@export var start_game_button: Button
+@export var main: CenterContainer
+@export var options: CenterContainer
+@export var window_mode_button: OptionButton
+@export var window_mode_container: HBoxContainer
+@export var vsync_mode_button: CheckButton
+@export var vsync_container: HBoxContainer
+@export var pixel_perfect_mode_button: CheckButton
+@export var master_volume_slider: HSlider
+@export var sfx_volume_slider: HSlider
+@export var music_volume_slider: HSlider
+
 var config: ConfigFile = ConfigFile.new()
 
 
 func _ready() -> void:
-	Options.window_mode_button = %WindowModeButton
-	Options.v_sync_mode_button = %VSyncButton
-	Options.pixel_perfect_mode_button = %PixelPerfectButton
-	Options.master_volume_slider = %MasterVolumeSlider
-	Options.sfx_volume_slider = %SFXVolumeSlider
-	Options.music_volume_slider = %MusicVolumeSlider
+	Options.window_mode_button = window_mode_button
+	Options.vsync_mode_button = vsync_mode_button
+	Options.pixel_perfect_mode_button = pixel_perfect_mode_button
+	Options.master_volume_slider = master_volume_slider
+	Options.sfx_volume_slider = sfx_volume_slider
+	Options.music_volume_slider = music_volume_slider
 	Options.load_config()
+
 	if OS.has_feature("mobile"):
 		window_mode_container.visible = false
-		v_sync_container.visible = false
+		vsync_container.visible = false
+	
 	start_game_button.grab_focus()
 
 func _process(_delta: float) -> void:
@@ -48,8 +56,8 @@ func _on_back_button_pressed() -> void:
 func _on_window_mode_button_item_selected(index: int) -> void:
 	Options.handle_window_mode(index)
 	
-func _on_v_sync_button_toggled(toggled_on: bool) -> void:
-	Options.handle_v_sync_mode(toggled_on)
+func _on_vsync_button_toggled(toggled_on: bool) -> void:
+	Options.handle_vsync_mode(toggled_on)
 
 func _on_pixel_perfect_button_toggled(toggled_on: bool) -> void:
 	Options.handle_pixel_perfect_mode(toggled_on)

@@ -3,41 +3,47 @@
 [ext_resource type="Script" uid="uid://samh1whx8i6t" path="res://scripts/pause_menu.gd" id="1"]
 [ext_resource type="FontFile" uid="uid://cma8cwdroigo7" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3"]
 
-[node name="PauseMenu" type="CanvasLayer"]
+[node name="PauseMenu" type="CanvasLayer" node_paths=PackedStringArray("resume_button", "main", "options", "window_mode_button", "window_mode_container", "vsync_mode_button", "vsync_container", "pixel_perfect_mode_button", "master_volume_slider", "sfx_volume_slider", "music_volume_slider")]
 process_mode = 3
 script = ExtResource("1")
+resume_button = NodePath("Main/PanelContainer/VBoxContainer/ResumeButton")
+main = NodePath("Main")
+options = NodePath("Options")
+window_mode_button = NodePath("Options/PanelContainer/VBoxContainer/WindowMode/WindowModeButton")
+window_mode_container = NodePath("Options/PanelContainer/VBoxContainer/WindowMode")
+vsync_mode_button = NodePath("Options/PanelContainer/VBoxContainer/VSync/VSyncButton")
+vsync_container = NodePath("Options/PanelContainer/VBoxContainer/VSync")
+pixel_perfect_mode_button = NodePath("Options/PanelContainer/VBoxContainer/PixelPerfect/PixelPerfectButton")
+master_volume_slider = NodePath("Options/PanelContainer/VBoxContainer/MasterVolume/MasterVolumeSlider")
+sfx_volume_slider = NodePath("Options/PanelContainer/VBoxContainer/SFXVolume/SFXVolumeSlider")
+music_volume_slider = NodePath("Options/PanelContainer/VBoxContainer/MusicVolume/MusicVolumeSlider")
 
-[node name="PauseMenu" type="CenterContainer" parent="."]
-unique_name_in_owner = true
+[node name="Main" type="CenterContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="PauseMenu"]
+[node name="PanelContainer" type="PanelContainer" parent="Main"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/PanelContainer"]
 layout_mode = 2
 
-[node name="ResumeButton" type="Button" parent="PauseMenu/PanelContainer/VBoxContainer"]
-unique_name_in_owner = true
+[node name="ResumeButton" type="Button" parent="Main/PanelContainer/VBoxContainer"]
 layout_mode = 2
 text = "Resume"
 
-[node name="OptionsButton" type="Button" parent="PauseMenu/PanelContainer/VBoxContainer"]
-unique_name_in_owner = true
+[node name="OptionsButton" type="Button" parent="Main/PanelContainer/VBoxContainer"]
 layout_mode = 2
 text = "Options"
 
-[node name="ExitButton" type="Button" parent="PauseMenu/PanelContainer/VBoxContainer"]
-unique_name_in_owner = true
+[node name="ExitButton" type="Button" parent="Main/PanelContainer/VBoxContainer"]
 layout_mode = 2
 text = "Exit"
 
 [node name="Options" type="CenterContainer" parent="."]
-unique_name_in_owner = true
 visible = false
 anchors_preset = 15
 anchor_right = 1.0
@@ -59,7 +65,6 @@ text = "Options"
 horizontal_alignment = 1
 
 [node name="WindowMode" type="HBoxContainer" parent="Options/PanelContainer/VBoxContainer"]
-unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 165
 
@@ -68,7 +73,6 @@ layout_mode = 2
 text = "Window Mode"
 
 [node name="WindowModeButton" type="OptionButton" parent="Options/PanelContainer/VBoxContainer/WindowMode"]
-unique_name_in_owner = true
 layout_mode = 2
 selected = 0
 item_count = 2
@@ -78,7 +82,6 @@ popup/item_1/text = "Windowed"
 popup/item_1/id = 1
 
 [node name="VSync" type="HBoxContainer" parent="Options/PanelContainer/VBoxContainer"]
-unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 360
 
@@ -87,7 +90,6 @@ layout_mode = 2
 text = "V-Sync"
 
 [node name="VSyncButton" type="CheckButton" parent="Options/PanelContainer/VBoxContainer/VSync"]
-unique_name_in_owner = true
 layout_mode = 2
 
 [node name="PixelPerfect" type="HBoxContainer" parent="Options/PanelContainer/VBoxContainer"]
@@ -100,7 +102,6 @@ layout_mode = 2
 text = "Pixel Perfect"
 
 [node name="PixelPerfectButton" type="CheckButton" parent="Options/PanelContainer/VBoxContainer/PixelPerfect"]
-unique_name_in_owner = true
 layout_mode = 2
 
 [node name="MasterVolume" type="HSplitContainer" parent="Options/PanelContainer/VBoxContainer"]
@@ -113,7 +114,6 @@ layout_mode = 2
 text = "Master"
 
 [node name="MasterVolumeSlider" type="HSlider" parent="Options/PanelContainer/VBoxContainer/MasterVolume"]
-unique_name_in_owner = true
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_vertical = 1
@@ -130,7 +130,6 @@ layout_mode = 2
 text = "SFX"
 
 [node name="SFXVolumeSlider" type="HSlider" parent="Options/PanelContainer/VBoxContainer/SFXVolume"]
-unique_name_in_owner = true
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_vertical = 1
@@ -147,7 +146,6 @@ layout_mode = 2
 text = "Music"
 
 [node name="MusicVolumeSlider" type="HSlider" parent="Options/PanelContainer/VBoxContainer/MusicVolume"]
-unique_name_in_owner = true
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_vertical = 1
@@ -155,17 +153,14 @@ max_value = 1.0
 step = 0.05
 
 [node name="BackButton" type="Button" parent="Options/PanelContainer/VBoxContainer"]
-unique_name_in_owner = true
 layout_mode = 2
 text = "Back"
 
-[connection signal="pressed" from="PauseMenu/PanelContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
-[connection signal="pressed" from="PauseMenu/PanelContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
-[connection signal="pressed" from="PauseMenu/PanelContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="Main/PanelContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="Main/PanelContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="Main/PanelContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="item_selected" from="Options/PanelContainer/VBoxContainer/WindowMode/WindowModeButton" to="." method="_on_window_mode_button_item_selected"]
-[connection signal="pressed" from="Options/PanelContainer/VBoxContainer/VSync/VSyncButton" to="." method="_on_v_sync_button_pressed"]
-[connection signal="toggled" from="Options/PanelContainer/VBoxContainer/VSync/VSyncButton" to="." method="_on_v_sync_button_toggled"]
-[connection signal="pressed" from="Options/PanelContainer/VBoxContainer/PixelPerfect/PixelPerfectButton" to="." method="_on_pixel_perfect_button_pressed"]
+[connection signal="toggled" from="Options/PanelContainer/VBoxContainer/VSync/VSyncButton" to="." method="_on_vsync_button_toggled"]
 [connection signal="toggled" from="Options/PanelContainer/VBoxContainer/PixelPerfect/PixelPerfectButton" to="." method="_on_pixel_perfect_button_toggled"]
 [connection signal="value_changed" from="Options/PanelContainer/VBoxContainer/MasterVolume/MasterVolumeSlider" to="." method="_on_master_volume_slider_value_changed"]
 [connection signal="value_changed" from="Options/PanelContainer/VBoxContainer/SFXVolume/SFXVolumeSlider" to="." method="_on_sfx_volume_slider_value_changed"]
