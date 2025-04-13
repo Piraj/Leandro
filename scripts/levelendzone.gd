@@ -18,6 +18,6 @@ func _on_body_entered(body: Node2D) -> void:
 		body.end_level()
 	level_completed_label.text = "Level Completed\n You collected " + str(game_manager.score) + "/" + str(coin_count) + " coins\n Press any key to return to main menu"
 	level_completed_label.visible = true
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(2).timeout
 	level_ended = true
 	

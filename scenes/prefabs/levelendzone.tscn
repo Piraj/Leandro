@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dosc0243u7xpa"]
 
-[ext_resource type="Script" uid="uid://b3mbr877q8xx7" path="res://scripts/levelendarea.gd" id="1_da3mi"]
+[ext_resource type="Script" uid="uid://b3mbr877q8xx7" path="res://scripts/levelendzone.gd" id="1_da3mi"]
 
 [node name="LevelEndZone" type="Area2D"]
 collision_mask = 2
