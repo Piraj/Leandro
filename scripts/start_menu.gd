@@ -2,8 +2,8 @@ extends Control
 
 
 @export var start_game_button: Button
-@export var main: CenterContainer
-@export var options: CenterContainer
+@export var main: MarginContainer
+@export var options: MarginContainer
 @export var window_mode_button: OptionButton
 @export var window_mode_container: HBoxContainer
 @export var vsync_mode_button: CheckButton

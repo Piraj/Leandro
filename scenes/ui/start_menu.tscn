@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://v4i4scxrhqws"]
 
 [ext_resource type="Script" uid="uid://cwffkp8d1t2x8" path="res://scripts/start_menu.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://ds4vxb4wo3xcx" path="res://Doghound Logo.svg" id="2"]
+[ext_resource type="Texture2D" uid="uid://cpv02ix217sqd" path="res://Doghound Logo.png" id="2_m0hmm"]
 [ext_resource type="FontFile" uid="uid://cma8cwdroigo7" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_dei22"]
 
 [node name="StartMenu" type="Control" node_paths=PackedStringArray("start_game_button", "main", "options", "window_mode_button", "window_mode_container", "vsync_mode_button", "vsync_container", "pixel_perfect_mode_button", "master_volume_slider", "sfx_volume_slider", "music_volume_slider")]
@@ -33,23 +33,30 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0980392, 0.313726, 0.752941, 1)
 
-[node name="Main" type="CenterContainer" parent="."]
+[node name="Main" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 50
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Main"]
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Main/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="Logo" type="TextureRect" parent="Main/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-texture = ExtResource("2")
+texture = ExtResource("2_m0hmm")
+expand_mode = 1
 
 [node name="Leandro" type="Label" parent="Main/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -57,7 +64,10 @@ theme_override_font_sizes/font_size = 24
 text = "Leandro"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Main/VBoxContainer"]
+custom_minimum_size = Vector2(175, 0)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
 
 [node name="StartGameButton" type="Button" parent="Main/VBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -71,7 +81,7 @@ text = "Options"
 layout_mode = 2
 text = "Quit"
 
-[node name="Options" type="CenterContainer" parent="."]
+[node name="Options" type="MarginContainer" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -79,6 +89,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 25
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Options"]
 layout_mode = 2
@@ -92,7 +106,6 @@ horizontal_alignment = 1
 
 [node name="WindowMode" type="HBoxContainer" parent="Options/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 165
 
 [node name="Label" type="Label" parent="Options/VBoxContainer/WindowMode"]
 layout_mode = 2
@@ -100,6 +113,7 @@ text = "Window Mode"
 
 [node name="WindowModeButton" type="OptionButton" parent="Options/VBoxContainer/WindowMode"]
 layout_mode = 2
+size_flags_horizontal = 10
 selected = 0
 item_count = 2
 popup/item_0/text = "Fullscreen"
@@ -109,7 +123,6 @@ popup/item_1/id = 1
 
 [node name="VSync" type="HBoxContainer" parent="Options/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 364
 
 [node name="Label" type="Label" parent="Options/VBoxContainer/VSync"]
 layout_mode = 2
@@ -117,11 +130,10 @@ text = "V-Sync"
 
 [node name="VSyncButton" type="CheckButton" parent="Options/VBoxContainer/VSync"]
 layout_mode = 2
+size_flags_horizontal = 10
 
 [node name="PixelPerfect" type="HBoxContainer" parent="Options/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 282
-alignment = 2
 
 [node name="Label" type="Label" parent="Options/VBoxContainer/PixelPerfect"]
 layout_mode = 2
@@ -129,52 +141,47 @@ text = "Pixel Perfect"
 
 [node name="PixelPerfectButton" type="CheckButton" parent="Options/VBoxContainer/PixelPerfect"]
 layout_mode = 2
+size_flags_horizontal = 10
 
 [node name="MasterVolume" type="HBoxContainer" parent="Options/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 4
-alignment = 2
 
 [node name="Label" type="Label" parent="Options/VBoxContainer/MasterVolume"]
 layout_mode = 2
 text = "Master"
 
 [node name="MasterVolumeSlider" type="HSlider" parent="Options/VBoxContainer/MasterVolume"]
-custom_minimum_size = Vector2(400, 0)
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-size_flags_vertical = 1
+size_flags_horizontal = 10
 max_value = 1.0
 step = 0.05
 
 [node name="SFXVolume" type="HBoxContainer" parent="Options/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 48
-alignment = 2
 
 [node name="Label" type="Label" parent="Options/VBoxContainer/SFXVolume"]
 layout_mode = 2
 text = "SFX"
 
 [node name="SFXVolumeSlider" type="HSlider" parent="Options/VBoxContainer/SFXVolume"]
-custom_minimum_size = Vector2(400, 0)
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-size_flags_vertical = 1
+size_flags_horizontal = 10
 max_value = 1.0
 step = 0.05
 
 [node name="MusicVolume" type="HBoxContainer" parent="Options/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 20
-alignment = 2
 
 [node name="Label" type="Label" parent="Options/VBoxContainer/MusicVolume"]
 layout_mode = 2
 text = "Music"
 
 [node name="MusicVolumeSlider" type="HSlider" parent="Options/VBoxContainer/MusicVolume"]
-custom_minimum_size = Vector2(400, 0)
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-size_flags_vertical = 1
+size_flags_horizontal = 10
 max_value = 1.0
 step = 0.05
 

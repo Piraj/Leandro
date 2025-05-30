@@ -9,27 +9,38 @@ script = ExtResource("1")
 resume_button = NodePath("Main/PanelContainer/VBoxContainer/ResumeButton")
 main = NodePath("Main")
 options = NodePath("Options")
-window_mode_button = NodePath("Options/PanelContainer/VBoxContainer/WindowMode/WindowModeButton")
-window_mode_container = NodePath("Options/PanelContainer/VBoxContainer/WindowMode")
-vsync_mode_button = NodePath("Options/PanelContainer/VBoxContainer/VSync/VSyncButton")
-vsync_container = NodePath("Options/PanelContainer/VBoxContainer/VSync")
-pixel_perfect_mode_button = NodePath("Options/PanelContainer/VBoxContainer/PixelPerfect/PixelPerfectButton")
-master_volume_slider = NodePath("Options/PanelContainer/VBoxContainer/MasterVolume/MasterVolumeSlider")
-sfx_volume_slider = NodePath("Options/PanelContainer/VBoxContainer/SFXVolume/SFXVolumeSlider")
-music_volume_slider = NodePath("Options/PanelContainer/VBoxContainer/MusicVolume/MusicVolumeSlider")
+window_mode_button = NodePath("Options/PanelContainer/MarginContainer/VBoxContainer/WindowMode/WindowModeButton")
+window_mode_container = NodePath("Options/PanelContainer/MarginContainer/VBoxContainer/WindowMode")
+vsync_mode_button = NodePath("Options/PanelContainer/MarginContainer/VBoxContainer/VSync/VSyncButton")
+vsync_container = NodePath("Options/PanelContainer/MarginContainer/VBoxContainer/VSync")
+pixel_perfect_mode_button = NodePath("Options/PanelContainer/MarginContainer/VBoxContainer/PixelPerfect/PixelPerfectButton")
+master_volume_slider = NodePath("Options/PanelContainer/MarginContainer/VBoxContainer/MasterVolume/MasterVolumeSlider")
+sfx_volume_slider = NodePath("Options/PanelContainer/MarginContainer/VBoxContainer/SFXVolume/SFXVolumeSlider")
+music_volume_slider = NodePath("Options/PanelContainer/MarginContainer/VBoxContainer/MusicVolume/MusicVolumeSlider")
 
-[node name="Main" type="CenterContainer" parent="."]
+[node name="Main" type="MarginContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 50
+metadata/_edit_use_anchors_ = true
 
 [node name="PanelContainer" type="PanelContainer" parent="Main"]
+custom_minimum_size = Vector2(135, 90)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Main/PanelContainer"]
+custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="ResumeButton" type="Button" parent="Main/PanelContainer/VBoxContainer"]
 layout_mode = 2
@@ -43,37 +54,51 @@ text = "Options"
 layout_mode = 2
 text = "Exit"
 
-[node name="Options" type="CenterContainer" parent="."]
+[node name="Options" type="MarginContainer" parent="."]
 visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 50
+metadata/_edit_use_anchors_ = true
 
 [node name="PanelContainer" type="PanelContainer" parent="Options"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Options/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Options/PanelContainer"]
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 3
 
-[node name="Label" type="Label" parent="Options/PanelContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/PanelContainer/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="Options/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
 theme_override_fonts/font = ExtResource("3")
 text = "Options"
 horizontal_alignment = 1
 
-[node name="WindowMode" type="HBoxContainer" parent="Options/PanelContainer/VBoxContainer"]
+[node name="WindowMode" type="HBoxContainer" parent="Options/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 165
 
-[node name="Label" type="Label" parent="Options/PanelContainer/VBoxContainer/WindowMode"]
+[node name="Label" type="Label" parent="Options/PanelContainer/MarginContainer/VBoxContainer/WindowMode"]
 layout_mode = 2
 text = "Window Mode"
 
-[node name="WindowModeButton" type="OptionButton" parent="Options/PanelContainer/VBoxContainer/WindowMode"]
+[node name="WindowModeButton" type="OptionButton" parent="Options/PanelContainer/MarginContainer/VBoxContainer/WindowMode"]
 layout_mode = 2
+size_flags_horizontal = 10
 selected = 0
 item_count = 2
 popup/item_0/text = "Fullscreen"
@@ -81,88 +106,84 @@ popup/item_0/id = 0
 popup/item_1/text = "Windowed"
 popup/item_1/id = 1
 
-[node name="VSync" type="HBoxContainer" parent="Options/PanelContainer/VBoxContainer"]
+[node name="VSync" type="HBoxContainer" parent="Options/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 360
 
-[node name="Label" type="Label" parent="Options/PanelContainer/VBoxContainer/VSync"]
+[node name="Label" type="Label" parent="Options/PanelContainer/MarginContainer/VBoxContainer/VSync"]
 layout_mode = 2
 text = "V-Sync"
 
-[node name="VSyncButton" type="CheckButton" parent="Options/PanelContainer/VBoxContainer/VSync"]
+[node name="VSyncButton" type="CheckButton" parent="Options/PanelContainer/MarginContainer/VBoxContainer/VSync"]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="PixelPerfect" type="HBoxContainer" parent="Options/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="PixelPerfect" type="HBoxContainer" parent="Options/PanelContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 278
-alignment = 2
-
-[node name="Label" type="Label" parent="Options/PanelContainer/VBoxContainer/PixelPerfect"]
+[node name="Label" type="Label" parent="Options/PanelContainer/MarginContainer/VBoxContainer/PixelPerfect"]
 layout_mode = 2
 text = "Pixel Perfect"
 
-[node name="PixelPerfectButton" type="CheckButton" parent="Options/PanelContainer/VBoxContainer/PixelPerfect"]
+[node name="PixelPerfectButton" type="CheckButton" parent="Options/PanelContainer/MarginContainer/VBoxContainer/PixelPerfect"]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="MasterVolume" type="HBoxContainer" parent="Options/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="MasterVolume" type="HSplitContainer" parent="Options/PanelContainer/VBoxContainer"]
-layout_mode = 2
-split_offset = 295
-dragger_visibility = 2
-
-[node name="Label" type="Label" parent="Options/PanelContainer/VBoxContainer/MasterVolume"]
+[node name="Label" type="Label" parent="Options/PanelContainer/MarginContainer/VBoxContainer/MasterVolume"]
 layout_mode = 2
 text = "Master"
 
-[node name="MasterVolumeSlider" type="HSlider" parent="Options/PanelContainer/VBoxContainer/MasterVolume"]
-custom_minimum_size = Vector2(400, 0)
+[node name="MasterVolumeSlider" type="HSlider" parent="Options/PanelContainer/MarginContainer/VBoxContainer/MasterVolume"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+size_flags_horizontal = 10
 size_flags_vertical = 1
 max_value = 1.0
 step = 0.05
 
-[node name="SFXVolume" type="HSplitContainer" parent="Options/PanelContainer/VBoxContainer"]
+[node name="SFXVolume" type="HBoxContainer" parent="Options/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-split_offset = 295
-dragger_visibility = 2
 
-[node name="Label" type="Label" parent="Options/PanelContainer/VBoxContainer/SFXVolume"]
+[node name="Label" type="Label" parent="Options/PanelContainer/MarginContainer/VBoxContainer/SFXVolume"]
 layout_mode = 2
 text = "SFX"
 
-[node name="SFXVolumeSlider" type="HSlider" parent="Options/PanelContainer/VBoxContainer/SFXVolume"]
-custom_minimum_size = Vector2(400, 0)
+[node name="SFXVolumeSlider" type="HSlider" parent="Options/PanelContainer/MarginContainer/VBoxContainer/SFXVolume"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+size_flags_horizontal = 10
 size_flags_vertical = 1
 max_value = 1.0
 step = 0.05
 
-[node name="MusicVolume" type="HSplitContainer" parent="Options/PanelContainer/VBoxContainer"]
+[node name="MusicVolume" type="HBoxContainer" parent="Options/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-split_offset = 295
-dragger_visibility = 2
 
-[node name="Label" type="Label" parent="Options/PanelContainer/VBoxContainer/MusicVolume"]
+[node name="Label" type="Label" parent="Options/PanelContainer/MarginContainer/VBoxContainer/MusicVolume"]
 layout_mode = 2
 text = "Music"
 
-[node name="MusicVolumeSlider" type="HSlider" parent="Options/PanelContainer/VBoxContainer/MusicVolume"]
-custom_minimum_size = Vector2(400, 0)
+[node name="MusicVolumeSlider" type="HSlider" parent="Options/PanelContainer/MarginContainer/VBoxContainer/MusicVolume"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+size_flags_horizontal = 10
 size_flags_vertical = 1
 max_value = 1.0
 step = 0.05
 
-[node name="BackButton" type="Button" parent="Options/PanelContainer/VBoxContainer"]
+[node name="BackButton" type="Button" parent="Options/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Back"
 
 [connection signal="pressed" from="Main/PanelContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="Main/PanelContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="Main/PanelContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
-[connection signal="item_selected" from="Options/PanelContainer/VBoxContainer/WindowMode/WindowModeButton" to="." method="_on_window_mode_button_item_selected"]
-[connection signal="toggled" from="Options/PanelContainer/VBoxContainer/VSync/VSyncButton" to="." method="_on_vsync_button_toggled"]
-[connection signal="toggled" from="Options/PanelContainer/VBoxContainer/PixelPerfect/PixelPerfectButton" to="." method="_on_pixel_perfect_button_toggled"]
-[connection signal="value_changed" from="Options/PanelContainer/VBoxContainer/MasterVolume/MasterVolumeSlider" to="." method="_on_master_volume_slider_value_changed"]
-[connection signal="value_changed" from="Options/PanelContainer/VBoxContainer/SFXVolume/SFXVolumeSlider" to="." method="_on_sfx_volume_slider_value_changed"]
-[connection signal="value_changed" from="Options/PanelContainer/VBoxContainer/MusicVolume/MusicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]
-[connection signal="pressed" from="Options/PanelContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="item_selected" from="Options/PanelContainer/MarginContainer/VBoxContainer/WindowMode/WindowModeButton" to="." method="_on_window_mode_button_item_selected"]
+[connection signal="toggled" from="Options/PanelContainer/MarginContainer/VBoxContainer/VSync/VSyncButton" to="." method="_on_vsync_button_toggled"]
+[connection signal="toggled" from="Options/PanelContainer/MarginContainer/VBoxContainer/PixelPerfect/PixelPerfectButton" to="." method="_on_pixel_perfect_button_toggled"]
+[connection signal="value_changed" from="Options/PanelContainer/MarginContainer/VBoxContainer/MasterVolume/MasterVolumeSlider" to="." method="_on_master_volume_slider_value_changed"]
+[connection signal="value_changed" from="Options/PanelContainer/MarginContainer/VBoxContainer/SFXVolume/SFXVolumeSlider" to="." method="_on_sfx_volume_slider_value_changed"]
+[connection signal="value_changed" from="Options/PanelContainer/MarginContainer/VBoxContainer/MusicVolume/MusicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]
+[connection signal="pressed" from="Options/PanelContainer/MarginContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
