@@ -14,7 +14,7 @@ config/name="Leandro"
 config/tags=PackedStringArray("2d", "learning", "platformer")
 run/main_scene="res://scenes/ui/start_menu.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://Doghound Logo.svg"
+config/icon="uid://cpv02ix217sqd"
 
 [autoload]
 
