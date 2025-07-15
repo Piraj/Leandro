@@ -1,6 +1,3 @@
-# Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,godot
-# Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,godot
-
 ### Godot ###
 # Godot 4+ specific ignores
 .godot/
@@ -37,6 +34,5 @@ mono_crash.*.json
 .history
 .ionide
 
-# End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,godot
-
+# Ignore export folder
 exports
