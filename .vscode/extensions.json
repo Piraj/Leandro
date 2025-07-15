@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    // Godot GDScript Support
+    "geequlim.godot-tools",
+    // Godot Theme
+    "ryanabx.godot-vscode-theme",
+  ]
+}
